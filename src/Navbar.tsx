@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <header className="navbar">
       <a className="navbar-brand" href="#inicio">
-        Foco<span>Pro</span>
+        Rafa Castaño
       </a>
       <nav className="navbar-links">
         <a href="#programa">Programa</a>
@@ -12,9 +12,6 @@ function Navbar() {
         <a href="#galeria">Galería</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a className="navbar-cta" href="#inscribirse">
-        Reservar mi cupo
-      </a>
     </header>
   )
 }
