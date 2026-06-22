@@ -17,16 +17,6 @@ export default function HeroEditorial() {
     if (el) wordsRef.current[i] = el;
   };
 
-  const handleEnter = () => {
-    wrapRef.current?.classList.add("open");
-    vidRef.current?.play();
-  };
-
-  const handleLeave = () => {
-    wrapRef.current?.classList.remove("open");
-    vidRef.current?.pause();
-  };
-
   return (
     <section className="he-hero">
       <nav className="he-nav">
@@ -49,27 +39,25 @@ export default function HeroEditorial() {
             </span>
             <span className="he-line2">
               <span className="he-w" ref={ref(2)}>también se</span>
-              <span
-                className="he-sale-wrap"
-                onMouseEnter={handleEnter}
-                onMouseLeave={handleLeave}
-              >
+              <span className="he-sale-wrap">
                 <span className="he-w he-bold he-italic he-red" ref={ref(3)}>
                   sale
-                </span>
-                <span className="he-video-wrap" ref={wrapRef}>
-                  <video
-                    ref={vidRef}
-                    src="/Vintage team.m4v"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                  />
                 </span>
               </span>
             </span>
           </h1>
+
+          <div className="he-video-wrap" ref={wrapRef}>
+            <video
+              ref={vidRef}
+              src="/Vintage team.m4v"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
+
           <a href="#contacto" className="he-cta">quiero salir</a>
         </div>
       </div>
