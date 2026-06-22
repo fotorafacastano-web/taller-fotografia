@@ -195,8 +195,8 @@
 }
 
 @media (max-width: 600px) {
-  .he-hero { min-height: auto; }
-  .he-body { flex: none; padding-bottom: 3rem; }
+  .he-hero { min-height: 100vh; }
+  .he-body { align-items: center; }
   .he-title { font-size: clamp(1.8rem, 8vw, 2.8rem); }
   .he-w { font-size: clamp(1.8rem, 8vw, 2.8rem); }
   .he-line2 { padding-left: clamp(16px, 4vw, 40px); }

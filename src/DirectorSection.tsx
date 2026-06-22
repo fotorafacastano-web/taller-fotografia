@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import "./DirectorSection.css";
@@ -11,66 +11,52 @@ interface DirectorSectionProps {
 
 export default function DirectorSection({ cover = false }: DirectorSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [settled, setSettled] = useState(false);
 
   useGSAP(
     () => {
-      if (!cover) {
-        gsap.set(sectionRef.current, { yPercent: 100 });
-        return;
-      }
-
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      function settle() {
-        const heroEl = document.querySelector(".he-hero") as HTMLElement | null;
-        const offset = heroEl?.offsetHeight ?? window.innerHeight;
-        setSettled(true);
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => window.scrollTo(0, offset));
-        });
-      }
-
       gsap.set(".ds-name-line span", { opacity: 0 });
       gsap.set(".ds-role span", { y: "115%" });
 
+      if (!cover) return;
+
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
       if (reduce) {
-        gsap.set(sectionRef.current, { yPercent: 0 });
+        sectionRef.current?.scrollIntoView({ block: "start" });
         gsap.set(".ds-media", { clipPath: "inset(0% 0 0 0)" });
         gsap.set(".ds-media video", { scale: 1 });
         gsap.set(".ds-name-line span", { opacity: 1 });
         gsap.set(".ds-role span", { y: 0 });
         gsap.set(".ds-marquee", { opacity: 1 });
-        settle();
         return;
       }
 
-      const tl = gsap.timeline({ defaults: { ease: "expo.inOut" } });
+      sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
-      tl.to(sectionRef.current, { yPercent: 0, duration: 1.1, onComplete: settle }, 0);
+      const tl = gsap.timeline({ defaults: { ease: "expo.inOut" } });
 
       tl.fromTo(
         ".ds-media",
         { clipPath: "inset(100% 0 0 0)" },
         { clipPath: "inset(0% 0 0 0)", duration: 1.3 },
-        0.1
+        0
       );
 
-      tl.to(".ds-media video", { scale: 1, duration: 2.2, ease: "power2.out" }, 0.1);
+      tl.to(".ds-media video", { scale: 1, duration: 2.2, ease: "power2.out" }, 0);
 
-      tl.to(".ds-name-line--1 span", { opacity: 1, duration: 0.5, ease: "steps(10)" }, 0.4);
+      tl.to(".ds-name-line--1 span", { opacity: 1, duration: 0.5, ease: "steps(10)" }, 0.3);
 
-      tl.to(".ds-name-line--2 span", { opacity: 1, duration: 0.5, ease: "steps(10)" }, 0.7);
+      tl.to(".ds-name-line--2 span", { opacity: 1, duration: 0.5, ease: "steps(10)" }, 0.6);
 
-      tl.from(".ds-role span", { y: "115%", duration: 0.8, ease: "expo.out" }, 0.9);
+      tl.from(".ds-role span", { y: "115%", duration: 0.8, ease: "expo.out" }, 0.8);
 
-      tl.to(".ds-marquee", { opacity: 1, duration: 0.9, ease: "power2.out" }, 1.0);
+      tl.to(".ds-marquee", { opacity: 1, duration: 0.9, ease: "power2.out" }, 0.9);
     },
     { scope: sectionRef, dependencies: [cover] }
   );
 
   return (
-    <div className={`ds-wrap${settled ? "" : " ds-wrap--fixed"}`} ref={sectionRef}>
+    <div className="ds-wrap" ref={sectionRef}>
       <header className="ds-hero">
         <div className="ds-media">
           <video muted loop playsInline autoPlay src="/fondo-web.mp4" />
