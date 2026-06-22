@@ -10,7 +10,7 @@ const EASE = "expo.inOut";
 export default function DirectorSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
-  const counterRef = useRef<HTMLSpanElement>(null);
+  const counterRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
