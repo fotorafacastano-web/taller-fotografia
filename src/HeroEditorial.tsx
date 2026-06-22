@@ -30,11 +30,12 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
     if (!textEl || !stageEl || !word) return;
     if (window.innerWidth > 600) return;
 
-    textEl.style.transform = "scaleX(1)";
+    textEl.style.fontSize = "";
     const naturalWidth = textEl.getBoundingClientRect().width;
     const availableWidth = stageEl.getBoundingClientRect().width;
     if (naturalWidth > 0) {
-      textEl.style.transform = `scaleX(${availableWidth / naturalWidth})`;
+      const currentSize = parseFloat(getComputedStyle(textEl).fontSize);
+      textEl.style.fontSize = `${(currentSize * availableWidth) / naturalWidth}px`;
     }
   }, [word]);
 

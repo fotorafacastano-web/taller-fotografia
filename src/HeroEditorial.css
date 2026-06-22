@@ -206,6 +206,6 @@
   .he-w { font-size: clamp(1.8rem, 8vw, 2.8rem); }
   .he-line2 { padding-left: clamp(16px, 4vw, 40px); }
   .he-stage { min-height: clamp(4rem, 26vw, 7rem); }
-  .he-bigword { font-size: clamp(2rem, 13vw, 4rem); }
+  .he-bigword-text { font-size: clamp(2rem, 13vw, 4rem); transform: none; }
   .he-footer { margin-top: 0; }
 }
