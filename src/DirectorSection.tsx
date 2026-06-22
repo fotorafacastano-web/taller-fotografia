@@ -62,7 +62,13 @@ export default function DirectorSection() {
 
       tl.to(".ds-media video", { scale: 1, duration: 2.4, ease: "power2.out" }, "<");
 
-      tl.to(".ds-name-line span", { y: 0, duration: 1.0, stagger: 0.12, ease: "expo.out" }, "-=1.0");
+      tl.to(".ds-name-line span", {
+        y: 0,
+        duration: 1.0,
+        stagger: 0.12,
+        ease: "expo.out",
+        clearProps: "willChange",
+      }, "-=1.0");
 
       tl.from(".ds-role span", { y: "115%", duration: 0.8, ease: "expo.out" }, "-=0.6");
 
@@ -96,18 +102,18 @@ export default function DirectorSection() {
         </div>
 
         <div className="ds-nav">
-          <a href="#">HB</a>
+          <a href="#">RC</a>
           <nav>
             <a href="#">Works</a>
             <a href="#">Info</a>
           </nav>
-          <span>Montréal, QC</span>
+          <span>HABLEMOS</span>
         </div>
 
         <div className="ds-center">
           <h2 className="ds-name">
-            <span className="ds-name-line"><span>Hervé</span></span>
-            <span className="ds-name-line"><span>Baillargeon</span></span>
+            <span className="ds-name-line"><span>RAFA</span></span>
+            <span className="ds-name-line"><span>CASTAÑO</span></span>
           </h2>
           <div className="ds-role-line">
             <p className="ds-role"><span>Director</span></p>
@@ -116,10 +122,10 @@ export default function DirectorSection() {
 
         <div className="ds-marquee">
           <div className="ds-marquee-track">
-            <span>Hervé Baillargeon — Director —&nbsp;</span>
-            <span>Hervé Baillargeon — Director —&nbsp;</span>
-            <span>Hervé Baillargeon — Director —&nbsp;</span>
-            <span>Hervé Baillargeon — Director —&nbsp;</span>
+            <span>Contenido creativo — Diseño —&nbsp;</span>
+            <span>Contenido creativo — Diseño —&nbsp;</span>
+            <span>Contenido creativo — Diseño —&nbsp;</span>
+            <span>Contenido creativo — Diseño —&nbsp;</span>
           </div>
         </div>
       </header>
