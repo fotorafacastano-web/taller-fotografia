@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&family=Inter:ital,wght@0,200;0,300;0,700;1,700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.he-hero {
+  background: #ece7da;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+}
+
+.he-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+}
+
+.he-nav-logo {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #1a1a18;
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+.he-nav-links { display: flex; gap: 2.5rem; }
+
+.he-nav-links a {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #1a1a18;
+  opacity: 0.4;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.he-nav-links a:hover { opacity: 1; }
+
+.he-body {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 3rem 3rem 0;
+}
+
+.he-side {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #1a1a18;
+  opacity: 0.3;
+  white-space: nowrap;
+  padding-top: 8px;
+}
+
+.he-main { flex: 1; }
+
+.he-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #1a1a18;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.he-title {
+  font-weight: 200;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: #1a1a18;
+}
+
+.he-line1 { display: block; overflow: hidden; }
+
+.he-line2 {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  padding-left: clamp(60px, 10vw, 160px);
+  margin-top: 0.05em;
+  flex-wrap: nowrap;
+}
+
+.he-w {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+              transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.he-w--vis { opacity: 1; transform: translateY(0); }
+
+.he-bold { font-weight: 700; }
+.he-italic { font-style: italic; }
+.he-red { color: #ff004d; cursor: pointer; }
+
+.he-sale-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.he-video-wrap {
+  position: absolute;
+  left: calc(100% + 0.3em);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
+  border-radius: 8px;
+  pointer-events: none;
+  transition: width 0.5s cubic-bezier(0.16,1,0.3,1),
+              opacity 0.4s ease;
+}
+
+.he-video-wrap.open {
+  width: min(600px, 90vw);
+  opacity: 1;
+}
+
+.he-video-wrap video {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.he-cta {
+  display: inline-block;
+  margin-top: 2.5rem;
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #1a1a18;
+  text-decoration: none;
+  border: 0.5px solid rgba(26,26,24,0.3);
+  padding: 8px 16px;
+  border-radius: 4px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.he-cta:hover { opacity: 1; }
+
+.he-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 2rem 3rem 2.5rem;
+  border-top: 0.5px solid rgba(26,26,24,0.12);
+  margin-top: auto;
+}
+
+.he-desc {
+  font-size: 12px;
+  line-height: 1.7;
+  color: rgba(26,26,24,0.45);
+  max-width: 200px;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .he-nav { padding: 1.5rem; }
+  .he-body { padding: 2rem 1.5rem 0; gap: 1rem; }
+  .he-footer { padding: 1.5rem; }
+  .he-side { display: none; }
+}
