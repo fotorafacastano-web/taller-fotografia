@@ -81,11 +81,11 @@ export default function DirectorSection() {
     <div className="ds-wrap" ref={sectionRef}>
       <div className="ds-intro" ref={introRef} aria-hidden="true">
         <div className="ds-intro-word">
-          <span className="ds-mask"><b>H</b></span>
-          <span className="ds-mask"><b>e</b></span>
-          <span className="ds-mask"><b>r</b></span>
-          <span className="ds-mask"><b>v</b></span>
-          <span className="ds-mask"><b>é</b></span>
+          <span className="ds-mask"><b>I</b></span>
+          <span className="ds-mask"><b>D</b></span>
+          <span className="ds-mask"><b>E</b></span>
+          <span className="ds-mask"><b>A</b></span>
+          <span className="ds-mask"><b>S</b></span>
         </div>
         <div className="ds-intro-count" ref={counterRef}>[ 00 — 100 ]</div>
       </div>
