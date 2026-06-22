@@ -76,14 +76,14 @@
   color: var(--ds-cream);
 }
 
-.ds-name-line { overflow: hidden; display: block; }
+.ds-name-line { overflow: hidden; display: block; padding-bottom: 0.12em; }
 .ds-name-line > span { display: inline-block; will-change: transform; }
 
 .ds-name {
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: clamp(3rem, 11vw, 11rem);
-  line-height: 0.92;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: #ffffff;
 }
@@ -112,7 +112,7 @@
   display: inline-flex;
   white-space: nowrap;
   will-change: transform;
-  animation: ds-scroll 26s linear infinite;
+  animation: ds-scroll 14s linear infinite;
 }
 .ds-marquee-track span {
   font-style: italic;
