@@ -31,13 +31,15 @@ export default function DirectorSection({ cover = false }: DirectorSectionProps)
         });
       }
 
-      gsap.set(".ds-name-line span, .ds-role span", { y: "115%" });
+      gsap.set(".ds-name-line span", { opacity: 0 });
+      gsap.set(".ds-role span", { y: "115%" });
 
       if (reduce) {
         gsap.set(sectionRef.current, { yPercent: 0 });
         gsap.set(".ds-media", { clipPath: "inset(0% 0 0 0)" });
         gsap.set(".ds-media video", { scale: 1 });
-        gsap.set([".ds-name-line span", ".ds-role span"], { y: 0 });
+        gsap.set(".ds-name-line span", { opacity: 1 });
+        gsap.set(".ds-role span", { y: 0 });
         gsap.set(".ds-marquee", { opacity: 1 });
         settle();
         return;
@@ -56,15 +58,13 @@ export default function DirectorSection({ cover = false }: DirectorSectionProps)
 
       tl.to(".ds-media video", { scale: 1, duration: 2.2, ease: "power2.out" }, 0.1);
 
-      tl.to(
-        ".ds-name-line span",
-        { y: 0, duration: 1.0, stagger: 0.12, ease: "expo.out", clearProps: "willChange" },
-        0.4
-      );
+      tl.to(".ds-name-line--1 span", { opacity: 1, duration: 0.5, ease: "steps(10)" }, 0.4);
 
-      tl.from(".ds-role span", { y: "115%", duration: 0.8, ease: "expo.out" }, 0.8);
+      tl.to(".ds-name-line--2 span", { opacity: 1, duration: 0.5, ease: "steps(10)" }, 0.7);
 
-      tl.to(".ds-marquee", { opacity: 1, duration: 0.9, ease: "power2.out" }, 0.9);
+      tl.from(".ds-role span", { y: "115%", duration: 0.8, ease: "expo.out" }, 0.9);
+
+      tl.to(".ds-marquee", { opacity: 1, duration: 0.9, ease: "power2.out" }, 1.0);
     },
     { scope: sectionRef, dependencies: [cover] }
   );
@@ -87,8 +87,8 @@ export default function DirectorSection({ cover = false }: DirectorSectionProps)
 
         <div className="ds-center">
           <h2 className="ds-name">
-            <span className="ds-name-line"><span>RAFA</span></span>
-            <span className="ds-name-line"><span>CASTAÑO</span></span>
+            <span className="ds-name-line ds-name-line--1"><span>RAFA</span></span>
+            <span className="ds-name-line ds-name-line--2"><span>CASTAÑO</span></span>
           </h2>
           <div className="ds-role-line">
             <p className="ds-role"><span>Director</span></p>
