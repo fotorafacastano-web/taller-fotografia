@@ -87,8 +87,8 @@ export default function DirectorSection({ cover = false }: DirectorSectionProps)
 
         <div className="ds-center">
           <h2 className="ds-name">
-            <span className="ds-name-line ds-name-line--1"><span>RAFA</span></span>
-            <span className="ds-name-line ds-name-line--2"><span>CASTAÑO</span></span>
+            <span className="ds-name-line ds-name-line--1"><span>Rafa</span></span>
+            <span className="ds-name-line ds-name-line--2"><span>Castaño</span></span>
           </h2>
           <div className="ds-role-line">
             <p className="ds-role"><span>Director</span></p>
