@@ -14,6 +14,8 @@ interface HeroEditorialProps {
 
 export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps) {
   const wordsRef = useRef<HTMLSpanElement[]>([]);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const bigWordTextRef = useRef<HTMLSpanElement>(null);
   const [phraseOut, setPhraseOut] = useState(false);
   const [word, setWord] = useState<string | null>(null);
   const [wordVisible, setWordVisible] = useState(false);
@@ -21,6 +23,20 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
   const ref = (i: number) => (el: HTMLSpanElement | null) => {
     if (el) wordsRef.current[i] = el;
   };
+
+  useEffect(() => {
+    const textEl = bigWordTextRef.current;
+    const stageEl = stageRef.current;
+    if (!textEl || !stageEl || !word) return;
+    if (window.innerWidth > 600) return;
+
+    textEl.style.transform = "scaleX(1)";
+    const naturalWidth = textEl.getBoundingClientRect().width;
+    const availableWidth = stageEl.getBoundingClientRect().width;
+    if (naturalWidth > 0) {
+      textEl.style.transform = `scaleX(${availableWidth / naturalWidth})`;
+    }
+  }, [word]);
 
   useEffect(() => {
     const timers: number[] = [];
@@ -80,7 +96,7 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
         <div className="he-main">
           <p className="he-label">( servicios )</p>
 
-          <div className="he-stage">
+          <div className="he-stage" ref={stageRef}>
             <h1 className={`he-title${phraseOut ? " he-title--out" : ""}`}>
               <span className="he-line1">
                 <span className="he-w" ref={ref(0)}>del</span>
@@ -97,7 +113,7 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
             </h1>
 
             <div className={`he-bigword${wordVisible ? " he-bigword--visible" : ""}`}>
-              {word}
+              <span className="he-bigword-text" ref={bigWordTextRef}>{word}</span>
             </div>
           </div>
 
