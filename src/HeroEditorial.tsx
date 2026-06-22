@@ -3,6 +3,8 @@ import "./HeroEditorial.css";
 
 export default function HeroEditorial() {
   const wordsRef = useRef<HTMLSpanElement[]>([]);
+  const vidWrapRef = useRef<HTMLDivElement>(null);
+  const vidRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     wordsRef.current.forEach((el, i) => {
@@ -13,6 +15,16 @@ export default function HeroEditorial() {
 
   const ref = (i: number) => (el: HTMLSpanElement | null) => {
     if (el) wordsRef.current[i] = el;
+  };
+
+  const handleEnter = () => {
+    vidWrapRef.current?.classList.add("open");
+    vidRef.current?.play();
+  };
+
+  const handleLeave = () => {
+    vidWrapRef.current?.classList.remove("open");
+    vidRef.current?.pause();
   };
 
   return (
@@ -32,12 +44,16 @@ export default function HeroEditorial() {
           <p className="he-label">( servicios )</p>
           <h1 className="he-title">
             <span className="he-line1">
-              <span className="he-w" ref={ref(0)}>del </span>
+              <span className="he-w" ref={ref(0)}>del</span>
               <span className="he-w he-bold" ref={ref(1)}>humo</span>
             </span>
             <span className="he-line2">
               <span className="he-w" ref={ref(2)}>también se</span>
-              <span className="he-sale-wrap">
+              <span
+                className="he-sale-wrap"
+                onMouseEnter={handleEnter}
+                onMouseLeave={handleLeave}
+              >
                 <span className="he-w he-bold he-italic he-red" ref={ref(3)}>
                   sale
                 </span>
@@ -45,10 +61,10 @@ export default function HeroEditorial() {
             </span>
           </h1>
 
-          <div className="he-video-wrap">
+          <div className="he-video-wrap" ref={vidWrapRef}>
             <video
+              ref={vidRef}
               src="/Vintage team.m4v"
-              autoPlay
               muted
               loop
               playsInline
