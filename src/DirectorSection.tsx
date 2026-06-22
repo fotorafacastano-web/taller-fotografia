@@ -97,14 +97,14 @@ export default function DirectorSection({ cover = false }: DirectorSectionProps)
 
         <div className="ds-marquee">
           <div className="ds-marquee-track">
-            <span>Contenido creativo — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
-            <span>Contenido creativo — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
-            <span>Contenido creativo — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
-            <span>Contenido creativo — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
-            <span>Contenido creativo — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
-            <span>Contenido creativo — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
-            <span>Contenido creativo — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
-            <span>Contenido creativo — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
+            <span>Contenido — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
+            <span>Contenido — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
+            <span>Contenido — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
+            <span>Contenido — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
+            <span>Contenido — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
+            <span>Contenido — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
+            <span>Contenido — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
+            <span>Contenido — Diseño Web — Branding — Fotografía — Vídeo —&nbsp;</span>
           </div>
         </div>
       </header>
