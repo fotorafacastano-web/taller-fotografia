@@ -97,7 +97,7 @@ export default function DirectorSection() {
             loop
             playsInline
             autoPlay
-            src="https://player.vimeo.com/progressive_redirect/playback/838044050/rendition/1080p/file.mp4?loc=external&log_user=0&signature=bcef4ae2f0bd8991a60d80af61f608d9f46a669afaff63294d546cf4bfb496ce"
+            src="/fondo-web.mp4"
           />
         </div>
 
