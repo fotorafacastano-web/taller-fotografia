@@ -3,8 +3,6 @@ import "./HeroEditorial.css";
 
 export default function HeroEditorial() {
   const wordsRef = useRef<HTMLSpanElement[]>([]);
-  const wrapRef = useRef<HTMLSpanElement>(null);
-  const vidRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     wordsRef.current.forEach((el, i) => {
@@ -47,9 +45,8 @@ export default function HeroEditorial() {
             </span>
           </h1>
 
-          <div className="he-video-wrap" ref={wrapRef}>
+          <div className="he-video-wrap">
             <video
-              ref={vidRef}
               src="/Vintage team.m4v"
               autoPlay
               muted
