@@ -76,14 +76,14 @@
   color: var(--ds-cream);
 }
 
-.ds-name-line { overflow: hidden; display: block; padding-bottom: 0.06em; }
+.ds-name-line { overflow: hidden; display: block; padding-bottom: 0.04em; }
 .ds-name-line > span { display: inline-block; will-change: opacity; }
 
 .ds-name {
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: clamp(3rem, 11vw, 11rem);
-  line-height: 1.03;
+  line-height: 1.02;
   letter-spacing: -0.02em;
   color: #ffffff;
 }
