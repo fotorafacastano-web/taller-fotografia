@@ -1,104 +1,79 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import "./DirectorSection.css";
 
 gsap.registerPlugin(useGSAP);
 
-const EASE = "expo.inOut";
+interface DirectorSectionProps {
+  cover?: boolean;
+}
 
-export default function DirectorSection() {
+export default function DirectorSection({ cover = false }: DirectorSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const introRef = useRef<HTMLDivElement>(null);
-  const counterRef = useRef<HTMLDivElement>(null);
+  const [settled, setSettled] = useState(false);
 
   useGSAP(
     () => {
+      if (!cover) {
+        gsap.set(sectionRef.current, { yPercent: 100 });
+        return;
+      }
+
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function settle() {
+        const heroEl = document.querySelector(".he-hero") as HTMLElement | null;
+        const offset = heroEl?.offsetHeight ?? window.innerHeight;
+        setSettled(true);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => window.scrollTo(0, offset));
+        });
+      }
 
       gsap.set(".ds-name-line span, .ds-role span", { y: "115%" });
 
       if (reduce) {
-        gsap.set(introRef.current, { display: "none" });
-        gsap.set([".ds-intro-word b", ".ds-name-line span", ".ds-role span"], { y: 0 });
+        gsap.set(sectionRef.current, { yPercent: 0 });
         gsap.set(".ds-media", { clipPath: "inset(0% 0 0 0)" });
         gsap.set(".ds-media video", { scale: 1 });
+        gsap.set([".ds-name-line span", ".ds-role span"], { y: 0 });
         gsap.set(".ds-marquee", { opacity: 1 });
+        settle();
         return;
       }
 
-      function runCounter(durationMs: number) {
-        const start = performance.now();
-        function tick(now: number) {
-          const p = Math.min((now - start) / durationMs, 1);
-          const val = Math.floor(p * 100)
-            .toString()
-            .padStart(2, "0");
-          if (counterRef.current) counterRef.current.textContent = `[ ${val} — 100 ]`;
-          if (p < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      }
+      const tl = gsap.timeline({ defaults: { ease: "expo.inOut" } });
 
-      runCounter(1700);
-
-      const tl = gsap.timeline({ defaults: { ease: EASE } });
-
-      tl.to(".ds-intro-word b", { y: 0, duration: 1.1, stagger: 0.08 }, 0.2);
-
-      tl.to(".ds-intro-word b", { y: "-110%", duration: 0.9, stagger: 0.05 }, "+=0.45");
-
-      tl.to(introRef.current, { yPercent: -100, duration: 1.1, ease: "expo.inOut" }, "-=0.35").set(
-        introRef.current,
-        { display: "none" }
-      );
+      tl.to(sectionRef.current, { yPercent: 0, duration: 1.1, onComplete: settle }, 0);
 
       tl.fromTo(
         ".ds-media",
         { clipPath: "inset(100% 0 0 0)" },
-        { clipPath: "inset(0% 0 0 0)", duration: 1.3, ease: "expo.inOut" },
-        "-=0.9"
+        { clipPath: "inset(0% 0 0 0)", duration: 1.3 },
+        0.1
       );
 
-      tl.to(".ds-media video", { scale: 1, duration: 2.4, ease: "power2.out" }, "<");
+      tl.to(".ds-media video", { scale: 1, duration: 2.2, ease: "power2.out" }, 0.1);
 
-      tl.to(".ds-name-line span", {
-        y: 0,
-        duration: 1.0,
-        stagger: 0.12,
-        ease: "expo.out",
-        clearProps: "willChange",
-      }, "-=1.0");
+      tl.to(
+        ".ds-name-line span",
+        { y: 0, duration: 1.0, stagger: 0.12, ease: "expo.out", clearProps: "willChange" },
+        0.4
+      );
 
-      tl.from(".ds-role span", { y: "115%", duration: 0.8, ease: "expo.out" }, "-=0.6");
+      tl.from(".ds-role span", { y: "115%", duration: 0.8, ease: "expo.out" }, 0.8);
 
-      tl.to(".ds-marquee", { opacity: 1, duration: 0.9, ease: "power2.out" }, "-=0.5");
+      tl.to(".ds-marquee", { opacity: 1, duration: 0.9, ease: "power2.out" }, 0.9);
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [cover] }
   );
 
   return (
-    <div className="ds-wrap" ref={sectionRef}>
-      <div className="ds-intro" ref={introRef} aria-hidden="true">
-        <div className="ds-intro-word">
-          <span className="ds-mask"><b>I</b></span>
-          <span className="ds-mask"><b>D</b></span>
-          <span className="ds-mask"><b>E</b></span>
-          <span className="ds-mask"><b>A</b></span>
-          <span className="ds-mask"><b>S</b></span>
-        </div>
-        <div className="ds-intro-count" ref={counterRef}>[ 00 — 100 ]</div>
-      </div>
-
+    <div className={`ds-wrap${settled ? "" : " ds-wrap--fixed"}`} ref={sectionRef}>
       <header className="ds-hero">
         <div className="ds-media">
-          <video
-            muted
-            loop
-            playsInline
-            autoPlay
-            src="/fondo-web.mp4"
-          />
+          <video muted loop playsInline autoPlay src="/fondo-web.mp4" />
         </div>
 
         <div className="ds-nav">

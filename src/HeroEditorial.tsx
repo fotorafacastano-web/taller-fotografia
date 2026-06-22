@@ -1,31 +1,68 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./HeroEditorial.css";
 
-export default function HeroEditorial() {
-  const wordsRef = useRef<HTMLSpanElement[]>([]);
-  const vidWrapRef = useRef<HTMLDivElement>(null);
-  const vidRef = useRef<HTMLVideoElement>(null);
+const WORDS = ["Con Contenido", "Creatividad", "Ideas"];
+const WORD_DURATION = 1500;
+const CROSSFADE = 300;
+const HOLD_PHRASE = 1000;
+const ENTRANCE_DONE = 150 * 3 + 200 + 700;
+const FINAL_HOLD = 2000;
 
-  useEffect(() => {
-    wordsRef.current.forEach((el, i) => {
-      if (!el) return;
-      setTimeout(() => el.classList.add("he-w--vis"), 150 * i + 200);
-    });
-  }, []);
+interface HeroEditorialProps {
+  onSequenceComplete?: () => void;
+}
+
+export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps) {
+  const wordsRef = useRef<HTMLSpanElement[]>([]);
+  const [phraseOut, setPhraseOut] = useState(false);
+  const [word, setWord] = useState<string | null>(null);
+  const [wordVisible, setWordVisible] = useState(false);
 
   const ref = (i: number) => (el: HTMLSpanElement | null) => {
     if (el) wordsRef.current[i] = el;
   };
 
-  const handleEnter = () => {
-    vidWrapRef.current?.classList.add("open");
-    vidRef.current?.play();
-  };
+  useEffect(() => {
+    const timers: number[] = [];
 
-  const handleLeave = () => {
-    vidWrapRef.current?.classList.remove("open");
-    vidRef.current?.pause();
-  };
+    wordsRef.current.forEach((el, i) => {
+      if (!el) return;
+      timers.push(window.setTimeout(() => el.classList.add("he-w--vis"), 150 * i + 200));
+    });
+
+    const T0 = ENTRANCE_DONE + HOLD_PHRASE;
+
+    timers.push(
+      window.setTimeout(() => {
+        setPhraseOut(true);
+        setWord(WORDS[0]);
+        setWordVisible(true);
+      }, T0)
+    );
+
+    const T1 = T0 + WORD_DURATION;
+    timers.push(window.setTimeout(() => setWordVisible(false), T1));
+    timers.push(
+      window.setTimeout(() => {
+        setWord(WORDS[1]);
+        setWordVisible(true);
+      }, T1 + CROSSFADE)
+    );
+
+    const T2 = T1 + CROSSFADE + WORD_DURATION;
+    timers.push(window.setTimeout(() => setWordVisible(false), T2));
+    timers.push(
+      window.setTimeout(() => {
+        setWord(WORDS[2]);
+        setWordVisible(true);
+      }, T2 + CROSSFADE)
+    );
+
+    const T3 = T2 + CROSSFADE + FINAL_HOLD;
+    timers.push(window.setTimeout(() => onSequenceComplete?.(), T3));
+
+    return () => timers.forEach((t) => window.clearTimeout(t));
+  }, [onSequenceComplete]);
 
   return (
     <section className="he-hero">
@@ -42,33 +79,26 @@ export default function HeroEditorial() {
         <span className="he-side">Scroll · 001</span>
         <div className="he-main">
           <p className="he-label">( servicios )</p>
-          <h1 className="he-title">
-            <span className="he-line1">
-              <span className="he-w" ref={ref(0)}>del</span>
-              <span className="he-w he-bold" ref={ref(1)}>humo</span>
-            </span>
-            <span className="he-line2">
-              <span className="he-w" ref={ref(2)}>también se</span>
-              <span
-                className="he-sale-wrap"
-                onMouseEnter={handleEnter}
-                onMouseLeave={handleLeave}
-              >
-                <span className="he-w he-bold he-italic he-red" ref={ref(3)}>
-                  sale
+
+          <div className="he-stage">
+            <h1 className={`he-title${phraseOut ? " he-title--out" : ""}`}>
+              <span className="he-line1">
+                <span className="he-w" ref={ref(0)}>del</span>
+                <span className="he-w he-bold" ref={ref(1)}>humo</span>
+              </span>
+              <span className="he-line2">
+                <span className="he-w" ref={ref(2)}>también se</span>
+                <span className="he-sale-wrap">
+                  <span className="he-w he-bold he-italic he-red" ref={ref(3)}>
+                    sale
+                  </span>
                 </span>
               </span>
-            </span>
-          </h1>
+            </h1>
 
-          <div className="he-video-wrap" ref={vidWrapRef}>
-            <video
-              ref={vidRef}
-              src="/Vintage team.m4v"
-              muted
-              loop
-              playsInline
-            />
+            <div className={`he-bigword${wordVisible ? " he-bigword--visible" : ""}`}>
+              {word}
+            </div>
           </div>
 
           <a href="#contacto" className="he-cta">quiero salir</a>
