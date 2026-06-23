@@ -2,6 +2,7 @@ import { useState } from "react";
 import HeroEditorial from "./HeroEditorial";
 import DirectorSection from "./DirectorSection";
 import ManifestoSection from "./ManifestoSection";
+import WorkSection from "./WorkSection";
 
 export default function App() {
   const [cover, setCover] = useState(false);
@@ -11,6 +12,7 @@ export default function App() {
       <HeroEditorial onSequenceComplete={() => setCover(true)} />
       <DirectorSection cover={cover} />
       <ManifestoSection />
+      <WorkSection />
     </main>
   );
 }

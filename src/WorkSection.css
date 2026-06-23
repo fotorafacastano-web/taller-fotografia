@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.work-section {
+  background: #ece7da;
+  padding: 5rem 3rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.work-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #1a1a18;
+  opacity: 0.4;
+  margin: 0 0 2.5rem;
+}
+
+.work-body {
+  position: relative;
+  display: flex;
+}
+
+.work-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.work-item {
+  cursor: pointer;
+}
+
+.work-name {
+  display: inline-block;
+  font-family: 'Anton', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 11vw, 175px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 24, 0.15);
+  transition: color 0.35s ease;
+}
+
+.work-item--active .work-name {
+  color: #1a1a18;
+}
+
+.work-media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 38%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.work-media-group {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.work-media-group--visible {
+  opacity: 1;
+}
+
+.work-media-img {
+  position: absolute;
+  width: 60%;
+  border-radius: 4px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
+
+.work-media-img--0 {
+  top: 8%;
+  left: 0;
+}
+
+.work-media-img--1 {
+  top: 32%;
+  right: 0;
+}
+
+@media (max-width: 900px) {
+  .work-section { padding: 3rem 1.5rem 4rem; }
+  .work-media { display: none; }
+  .work-name { font-size: clamp(2.2rem, 14vw, 4.5rem); }
+}
