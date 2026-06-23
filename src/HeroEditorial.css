@@ -202,10 +202,16 @@
 @media (max-width: 600px) {
   .he-hero { min-height: 100vh; }
   .he-body { align-items: center; }
-  .he-title { font-size: clamp(2.25rem, 10vw, 3.5rem); }
-  .he-w { font-size: clamp(2.25rem, 10vw, 3.5rem); }
-  .he-line2 { padding-left: clamp(16px, 4vw, 40px); }
-  .he-stage { min-height: clamp(4rem, 26vw, 7rem); }
+  .he-title { font-size: clamp(2.25rem, 12vw, 3.5rem); line-height: 1; }
+  .he-w { font-size: clamp(2.25rem, 12vw, 3.5rem); }
+  .he-line2 {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0;
+    gap: 0;
+    margin-top: 0;
+  }
+  .he-stage { min-height: 50vh; }
   .he-bigword-text { font-size: clamp(2rem, 13vw, 4rem); transform: none; }
   .he-footer { margin-top: 0; }
 }
