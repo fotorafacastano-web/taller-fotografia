@@ -21,14 +21,14 @@ const PROJECTS = [
 ];
 
 export default function WorkSection() {
-  const [hovered, setHovered] = useState<number | null>(null);
+  const [hovered, setHovered] = useState(0);
 
   return (
     <section className="work-section">
       <p className="work-label">( work )</p>
 
       <div className="work-body">
-        <ul className="work-list" onMouseLeave={() => setHovered(null)}>
+        <ul className="work-list" onMouseLeave={() => setHovered(0)}>
           {PROJECTS.map((p, i) => (
             <li
               key={p.name}
