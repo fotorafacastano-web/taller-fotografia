@@ -116,9 +116,13 @@ export default function ManifestoSection() {
 
         <div className="mf-center">
           <p className="mf-text">
-            Tu marca tiene algo que decir.
+            Tu marca tiene algo
             <br />
-            Yo hago que merezca la pena escucharlo.
+            que decir.
+            <br />
+            Yo hago que merezca
+            <br />
+            la pena escucharlo.
           </p>
           <a href="#equipo" className="mf-cta">CONECTA</a>
         </div>
