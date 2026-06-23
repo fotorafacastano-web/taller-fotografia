@@ -25,7 +25,7 @@ const PROJECT_NAMES = [
 
 const PROJECTS = PROJECT_NAMES.map((name, i) => ({
   name,
-  images: Array.from({ length: 5 }, (_, j) => PHOTOS[(i + j) % PHOTOS.length]),
+  images: Array.from({ length: 4 }, (_, j) => PHOTOS[(i + j) % PHOTOS.length]),
 }));
 
 export default function WorkSection() {
@@ -47,16 +47,11 @@ export default function WorkSection() {
         </ul>
 
         <div className="work-media">
-          {PROJECTS.map((p, i) => (
-            <div
-              key={p.name}
-              className={`work-media-group${hovered === i ? " work-media-group--visible" : ""}`}
-            >
-              {p.images.map((src, j) => (
-                <img key={j} src={src} alt={p.name} className="work-media-img" />
-              ))}
-            </div>
-          ))}
+          <div className="work-media-stack" key={hovered}>
+            {PROJECTS[hovered].images.map((src, j) => (
+              <img key={j} src={src} alt={PROJECTS[hovered].name} className="work-media-img" />
+            ))}
+          </div>
         </div>
       </div>
     </section>

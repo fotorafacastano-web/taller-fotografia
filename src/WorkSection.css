@@ -4,19 +4,19 @@
   background: #ece7da;
   padding: 0;
   position: relative;
-  overflow: hidden;
 }
 
 .work-body {
   position: relative;
   display: flex;
+  align-items: flex-start;
 }
 
 .work-list {
   list-style: none;
   margin: 0;
   padding: 0 3rem;
-  width: 100%;
+  width: 68%;
 }
 
 .work-item {
@@ -40,34 +40,27 @@
 }
 
 .work-media {
-  position: absolute;
-  top: 0;
-  right: 0;
   width: 32%;
-  height: 100%;
   pointer-events: none;
 }
 
-.work-media-group {
-  position: absolute;
-  inset: 0;
+.work-media-stack {
   display: flex;
   flex-direction: column;
-  opacity: 0;
-  transition: opacity 0.45s ease;
+  animation: work-media-fade 0.4s ease;
 }
 
-.work-media-group--visible {
-  opacity: 1;
+@keyframes work-media-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .work-media-img {
   display: block;
   width: 100%;
-  flex: 1;
+  height: auto;
   margin: 0;
   border: 0;
-  object-fit: cover;
 }
 
 @media (max-width: 900px) {
