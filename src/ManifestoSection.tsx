@@ -42,7 +42,7 @@ export default function ManifestoSection() {
           {
             x: 0,
             y: 0,
-            scale: 1,
+            scale: 1.5,
             ease: "none",
             scrollTrigger: {
               trigger: stageEl,
