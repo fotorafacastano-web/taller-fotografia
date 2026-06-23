@@ -7,12 +7,12 @@ import "./ManifestoSection.css";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const PHOTOS = [
-  { src: "/hero-bg.jpg", className: "mf-photo--1", baseRotate: -7, strength: 0.6 },
-  { src: "/hero-bg.jpg", className: "mf-photo--2", baseRotate: 5, strength: 0.9 },
-  { src: "/hero-bg.jpg", className: "mf-photo--3", baseRotate: 6, strength: 0.8 },
-  { src: "/hero-bg.jpg", className: "mf-photo--4", baseRotate: -4, strength: 1.1 },
-  { src: "/hero-bg.jpg", className: "mf-photo--5", baseRotate: 8, strength: 0.7 },
-  { src: "/hero-bg.jpg", className: "mf-photo--6", baseRotate: -6, strength: 1.0 },
+  { src: "/RafaCastano-1.avif", className: "mf-photo--1", baseRotate: -7, strength: 0.6 },
+  { src: "/RafaCastano-2.avif", className: "mf-photo--2", baseRotate: 5, strength: 0.9 },
+  { src: "/RafaCastano-3.avif", className: "mf-photo--3", baseRotate: 6, strength: 0.8 },
+  { src: "/RafaCastano-4.avif", className: "mf-photo--4", baseRotate: -4, strength: 1.1 },
+  { src: "/RafaCastano-5.avif", className: "mf-photo--5", baseRotate: 8, strength: 0.7 },
+  { src: "/RafaCastano-6.avif", className: "mf-photo--6", baseRotate: -6, strength: 1.0 },
 ];
 
 export default function ManifestoSection() {
