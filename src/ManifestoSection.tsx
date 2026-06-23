@@ -116,15 +116,11 @@ export default function ManifestoSection() {
 
         <div className="mf-center">
           <p className="mf-text">
-            Contenido único que marca
+            Tu marca tiene algo que decir.
             <br />
-            tu estrategia, y para tu scroll.
-            <br />
-            Tu marca,
-            <br />
-            marca la diferencia.
+            Yo hago que merezca la pena escucharlo.
           </p>
-          <a href="#equipo" className="mf-cta">Quiero un cambio</a>
+          <a href="#equipo" className="mf-cta">CONECTA</a>
         </div>
       </div>
     </section>
