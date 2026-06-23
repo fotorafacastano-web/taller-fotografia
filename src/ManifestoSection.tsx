@@ -35,14 +35,16 @@ export default function ManifestoSection() {
         const localTop = photoRect.top - stageRect.top;
         const photoCenterX = localLeft + photoRect.width / 2;
         const photoCenterY = localTop + photoRect.height / 2;
+        const offsetX = photoCenterX - stageCenterX;
+        const offsetY = photoCenterY - stageCenterY;
 
         gsap.fromTo(
           wrapEl,
-          { x: stageCenterX - photoCenterX, y: stageCenterY - photoCenterY, scale: 0.6 },
+          { x: -offsetX, y: -offsetY, scale: 0.6 },
           {
-            x: 0,
-            y: 0,
-            scale: 1.5,
+            x: offsetX * 0.1,
+            y: offsetY * 0.1,
+            scale: 1.75,
             ease: "none",
             scrollTrigger: {
               trigger: stageEl,
