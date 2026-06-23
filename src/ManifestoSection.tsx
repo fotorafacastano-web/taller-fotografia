@@ -11,6 +11,8 @@ const PHOTOS = [
   { src: "/hero-bg.jpg", className: "mf-photo--2", baseRotate: 5, strength: 0.9 },
   { src: "/hero-bg.jpg", className: "mf-photo--3", baseRotate: 6, strength: 0.8 },
   { src: "/hero-bg.jpg", className: "mf-photo--4", baseRotate: -4, strength: 1.1 },
+  { src: "/hero-bg.jpg", className: "mf-photo--5", baseRotate: 8, strength: 0.7 },
+  { src: "/hero-bg.jpg", className: "mf-photo--6", baseRotate: -6, strength: 1.0 },
 ];
 
 export default function ManifestoSection() {

@@ -10,8 +10,8 @@
 .mf-stage {
   position: relative;
   width: 100%;
-  max-width: 1100px;
-  height: 560px;
+  max-width: 1240px;
+  height: 620px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,10 +40,12 @@
   display: block;
 }
 
-.mf-photo-wrap.mf-photo--1 { top: 6%; left: 10%; }
-.mf-photo-wrap.mf-photo--2 { top: 4%; right: 10%; }
-.mf-photo-wrap.mf-photo--3 { bottom: 6%; left: 16%; }
-.mf-photo-wrap.mf-photo--4 { bottom: 4%; right: 14%; }
+.mf-photo-wrap.mf-photo--1 { top: 4%; left: 4%; }
+.mf-photo-wrap.mf-photo--2 { top: 2%; right: 4%; }
+.mf-photo-wrap.mf-photo--3 { top: 32%; left: -2%; }
+.mf-photo-wrap.mf-photo--4 { top: 36%; right: -2%; }
+.mf-photo-wrap.mf-photo--5 { bottom: 4%; left: 12%; }
+.mf-photo-wrap.mf-photo--6 { bottom: 2%; right: 10%; }
 
 .mf-center {
   position: relative;
@@ -89,16 +91,24 @@
 
 @media (max-width: 768px) {
   .mf-section { padding: 4rem 1rem; }
-  .mf-stage { height: 620px; }
+  .mf-stage { height: 720px; }
   .mf-photo-wrap { width: clamp(90px, 24vw, 120px); height: clamp(115px, 30vw, 150px); }
+  .mf-photo-wrap.mf-photo--1 { top: 2%; left: 2%; }
+  .mf-photo-wrap.mf-photo--2 { top: 2%; right: 2%; }
+  .mf-photo-wrap.mf-photo--3 { top: 38%; left: -2%; }
+  .mf-photo-wrap.mf-photo--4 { top: 42%; right: -2%; }
+  .mf-photo-wrap.mf-photo--5 { bottom: 2%; left: 4%; }
+  .mf-photo-wrap.mf-photo--6 { bottom: 0%; right: 4%; }
   .mf-text { font-size: clamp(1.1rem, 4.2vw, 1.5rem); }
   .mf-center { gap: 1.4rem; max-width: 78%; }
 }
 
 @media (max-width: 480px) {
-  .mf-stage { height: 560px; }
-  .mf-photo--1 { top: 4%; left: 2%; }
-  .mf-photo--2 { top: 2%; right: 2%; }
-  .mf-photo--3 { bottom: 8%; left: 4%; }
-  .mf-photo--4 { bottom: 6%; right: 2%; }
+  .mf-stage { height: 640px; }
+  .mf-photo-wrap.mf-photo--1 { top: 0%; left: 0%; }
+  .mf-photo-wrap.mf-photo--2 { top: 0%; right: 0%; }
+  .mf-photo-wrap.mf-photo--3 { top: 40%; left: -4%; }
+  .mf-photo-wrap.mf-photo--4 { top: 44%; right: -4%; }
+  .mf-photo-wrap.mf-photo--5 { bottom: 0%; left: 2%; }
+  .mf-photo-wrap.mf-photo--6 { bottom: -2%; right: 2%; }
 }
