@@ -2,19 +2,9 @@
 
 .work-section {
   background: #ece7da;
-  padding: 5rem 3rem 6rem;
+  padding: 0;
   position: relative;
   overflow: hidden;
-}
-
-.work-label {
-  font-family: 'Geist Mono', monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #1a1a18;
-  opacity: 0.4;
-  margin: 0 0 2.5rem;
 }
 
 .work-body {
@@ -25,7 +15,7 @@
 .work-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 3rem;
   width: 100%;
 }
 
@@ -53,7 +43,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 38%;
+  width: 32%;
   height: 100%;
   pointer-events: none;
 }
@@ -61,6 +51,8 @@
 .work-media-group {
   position: absolute;
   inset: 0;
+  display: flex;
+  flex-direction: column;
   opacity: 0;
   transition: opacity 0.45s ease;
 }
@@ -70,26 +62,16 @@
 }
 
 .work-media-img {
-  position: absolute;
-  width: 60%;
-  border-radius: 4px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  display: block;
+  width: 100%;
+  flex: 1;
+  margin: 0;
+  border: 0;
   object-fit: cover;
-  aspect-ratio: 4 / 5;
-}
-
-.work-media-img--0 {
-  top: 8%;
-  left: 0;
-}
-
-.work-media-img--1 {
-  top: 32%;
-  right: 0;
 }
 
 @media (max-width: 900px) {
-  .work-section { padding: 3rem 1.5rem 4rem; }
+  .work-list { padding: 0 1.5rem; }
   .work-media { display: none; }
   .work-name { font-size: clamp(2.2rem, 14vw, 4.5rem); }
 }

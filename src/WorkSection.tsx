@@ -1,32 +1,38 @@
 import { useState } from "react";
 import "./WorkSection.css";
 
-const PROJECTS = [
-  {
-    name: "Proyecto Uno",
-    images: ["/RafaCastano-1.avif", "/RafaCastano-2.avif"],
-  },
-  {
-    name: "Proyecto Dos",
-    images: ["/RafaCastano-3.avif", "/RafaCastano-4.avif"],
-  },
-  {
-    name: "Proyecto Tres",
-    images: ["/RafaCastano-5.avif", "/RafaCastano-6.avif"],
-  },
-  {
-    name: "Proyecto Cuatro",
-    images: ["/RafaCastano-1.avif", "/RafaCastano-3.avif"],
-  },
+const PHOTOS = [
+  "/RafaCastano-1.avif",
+  "/RafaCastano-2.avif",
+  "/RafaCastano-3.avif",
+  "/RafaCastano-4.avif",
+  "/RafaCastano-5.avif",
+  "/RafaCastano-6.avif",
 ];
+
+const PROJECT_NAMES = [
+  "Proyecto Uno",
+  "Proyecto Dos",
+  "Proyecto Tres",
+  "Proyecto Cuatro",
+  "Proyecto Cinco",
+  "Proyecto Seis",
+  "Proyecto Siete",
+  "Proyecto Ocho",
+  "Proyecto Nueve",
+  "Proyecto Diez",
+];
+
+const PROJECTS = PROJECT_NAMES.map((name, i) => ({
+  name,
+  images: Array.from({ length: 5 }, (_, j) => PHOTOS[(i + j) % PHOTOS.length]),
+}));
 
 export default function WorkSection() {
   const [hovered, setHovered] = useState(0);
 
   return (
     <section className="work-section">
-      <p className="work-label">( work )</p>
-
       <div className="work-body">
         <ul className="work-list" onMouseLeave={() => setHovered(0)}>
           {PROJECTS.map((p, i) => (
@@ -47,7 +53,7 @@ export default function WorkSection() {
               className={`work-media-group${hovered === i ? " work-media-group--visible" : ""}`}
             >
               {p.images.map((src, j) => (
-                <img key={j} src={src} alt={p.name} className={`work-media-img work-media-img--${j}`} />
+                <img key={j} src={src} alt={p.name} className="work-media-img" />
               ))}
             </div>
           ))}
