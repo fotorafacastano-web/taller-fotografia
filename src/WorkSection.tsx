@@ -32,7 +32,7 @@ export default function WorkSection() {
   const [hovered, setHovered] = useState(0);
 
   return (
-    <section className="work-section">
+    <section className="work-section" id="work">
       <div className="work-body">
         <ul className="work-list" onMouseLeave={() => setHovered(0)}>
           {PROJECTS.map((p, i) => (

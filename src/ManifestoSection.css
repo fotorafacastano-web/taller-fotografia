@@ -61,7 +61,7 @@
 .mf-text {
   font-family: "Mango Grotesque", sans-serif;
   font-weight: 500;
-  font-size: clamp(1.68rem, 4.8vw, 50.4px);
+  font-size: clamp(2.016rem, 5.76vw, 60.48px);
   line-height: 1.02;
   letter-spacing: -0.02em;
   color: #ffffff;
@@ -69,7 +69,7 @@
 
 @media (min-width: 769px) {
   .mf-text {
-    font-size: 50.4px;
+    font-size: 60.48px;
   }
 }
 

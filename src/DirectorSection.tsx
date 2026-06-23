@@ -65,7 +65,7 @@ export default function DirectorSection({ cover = false }: DirectorSectionProps)
         <div className="ds-nav">
           <a href="#">RC</a>
           <nav>
-            <a href="#">Works</a>
+            <a href="#work">Works</a>
             <a href="#">Info</a>
           </nav>
           <span>HABLEMOS</span>
