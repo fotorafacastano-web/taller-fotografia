@@ -45,6 +45,7 @@
 .work-media-stack {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   animation: work-media-fade 0.4s ease;
 }
 
@@ -55,11 +56,15 @@
 
 .work-media-img {
   display: block;
-  width: 100%;
   height: auto;
   margin: 0;
   border: 0;
 }
+
+.work-media-img:nth-child(1) { width: 25%; }
+.work-media-img:nth-child(2) { width: 50%; }
+.work-media-img:nth-child(3) { width: 75%; }
+.work-media-img:nth-child(4) { width: 100%; }
 
 @media (max-width: 900px) {
   .work-list { padding: 0 1.5rem; }
