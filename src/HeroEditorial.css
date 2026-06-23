@@ -117,12 +117,10 @@
   font-family: 'Mango Grotesque', sans-serif;
   font-weight: 800;
   font-size: clamp(2.8rem, 13vw, 160px);
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   line-height: 1;
   color: #1a1a18;
   white-space: nowrap;
-  transform: scaleX(0.88);
-  transform-origin: left center;
 }
 
 .he-line1 { display: flex; gap: 12px; align-items: baseline; overflow: hidden; }
@@ -247,7 +245,7 @@
     position: relative;
     inset: auto;
   }
-  .he-bigword-text { font-size: clamp(2rem, 13vw, 4rem); transform: none; }
+  .he-bigword-text { font-size: clamp(2rem, 13vw, 4rem); }
   .he-footer { margin-top: 0; }
   .he-manifesto { max-width: 100%; }
 }
