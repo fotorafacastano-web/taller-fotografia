@@ -236,7 +236,17 @@
     gap: 0;
     margin-top: 0;
   }
-  .he-stage { min-height: 50vh; }
+  .he-stage {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+  .he-title { grid-area: 1 / 1 / 2 / 2; }
+  .he-bigword {
+    grid-area: 1 / 1 / 2 / 2;
+    position: relative;
+    inset: auto;
+  }
   .he-bigword-text { font-size: clamp(2rem, 13vw, 4rem); transform: none; }
   .he-footer { margin-top: 0; }
   .he-manifesto { max-width: 100%; }
