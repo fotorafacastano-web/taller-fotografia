@@ -126,7 +126,7 @@ export default function ManifestoSection() {
             <br />
             la pena escucharlo.
           </p>
-          <a href="#equipo" className="mf-cta">CONECTA</a>
+          <a href="#equipo" className="mf-cta">Cuéntame tu proyecto</a>
         </div>
       </div>
     </section>
