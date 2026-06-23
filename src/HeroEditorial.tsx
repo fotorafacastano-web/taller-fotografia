@@ -118,7 +118,7 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
             </div>
           </div>
 
-          <a href="#contacto" className="he-cta">quiero salir</a>
+          <a href="#contacto" className="he-cta">Cuéntanos tu proyecto</a>
         </div>
       </div>
 
