@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Geist+Mono:wght@400&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -114,7 +114,7 @@
 
 .he-bigword-text {
   display: inline-block;
-  font-family: 'Anton', 'Mango Grotesque', sans-serif;
+  font-family: 'Mango Grotesque', sans-serif;
   font-weight: 800;
   font-size: clamp(2.8rem, 13vw, 160px);
   letter-spacing: -0.03em;

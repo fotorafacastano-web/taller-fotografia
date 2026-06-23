@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@400;500&display=swap');
 
 .ds-wrap {
   --ds-cream: #ece7da;
@@ -74,7 +74,7 @@
 .ds-name-line > span { display: inline-block; will-change: opacity; }
 
 .ds-name {
-  font-family: "Anton", "Mango Grotesque", sans-serif;
+  font-family: "Mango Grotesque", sans-serif;
   font-weight: 700;
   font-size: clamp(3rem, 11vw, 11rem);
   line-height: 1.02;
