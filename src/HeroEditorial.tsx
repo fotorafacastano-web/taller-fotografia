@@ -100,14 +100,14 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
           <div className="he-stage" ref={stageRef}>
             <h1 className={`he-title${phraseOut ? " he-title--out" : ""}`}>
               <span className="he-line1">
-                <span className="he-w" ref={ref(0)}>del</span>
-                <span className="he-w he-bold" ref={ref(1)}>humo</span>
+                <span className="he-w" ref={ref(0)}>Tu</span>
+                <span className="he-w he-bold" ref={ref(1)}>contenido,</span>
               </span>
               <span className="he-line2">
-                <span className="he-w" ref={ref(2)}>también se</span>
+                <span className="he-w" ref={ref(2)}>tu historia,</span>
                 <span className="he-sale-wrap">
                   <span className="he-w he-bold he-italic he-red" ref={ref(3)}>
-                    sale
+                    tu marca
                   </span>
                 </span>
               </span>
