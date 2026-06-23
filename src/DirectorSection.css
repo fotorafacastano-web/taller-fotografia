@@ -78,7 +78,7 @@
   font-weight: 700;
   font-size: clamp(3rem, 11vw, 11rem);
   line-height: 1.02;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #ffffff;
 }
