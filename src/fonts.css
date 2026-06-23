@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "Mango Grotesque";
+  src: url("/fonts/mango-grotesque/MangoGrotesque-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mango Grotesque";
+  src: url("/fonts/mango-grotesque/MangoGrotesque-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mango Grotesque";
+  src: url("/fonts/mango-grotesque/MangoGrotesque-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mango Grotesque";
+  src: url("/fonts/mango-grotesque/MangoGrotesque-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mango Grotesque";
+  src: url("/fonts/mango-grotesque/MangoGrotesque-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mango Grotesque";
+  src: url("/fonts/mango-grotesque/MangoGrotesque-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mango Grotesque";
+  src: url("/fonts/mango-grotesque/MangoGrotesque-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mango Grotesque";
+  src: url("/fonts/mango-grotesque/MangoGrotesque-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mango Grotesque";
+  src: url("/fonts/mango-grotesque/MangoGrotesque-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mango Grotesque";
+  src: url("/fonts/mango-grotesque/MangoGrotesque-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mango Grotesque";
+  src: url("/fonts/mango-grotesque/MangoGrotesque-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}

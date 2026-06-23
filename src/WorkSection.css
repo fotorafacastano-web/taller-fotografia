@@ -25,7 +25,7 @@
 
 .work-name {
   display: inline-block;
-  font-family: 'Anton', 'Inter', sans-serif;
+  font-family: 'Anton', 'Mango Grotesque', sans-serif;
   font-weight: 400;
   font-size: clamp(1.75rem, 7.7vw, 122.5px);
   line-height: 0.95;
