@@ -1,9 +1,10 @@
 import { useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./ManifestoSection.css";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const PHOTOS = [
   { src: "/hero-bg.jpg", className: "mf-photo--1", baseRotate: -7, strength: 0.6 },
@@ -14,10 +15,43 @@ const PHOTOS = [
 
 export default function ManifestoSection() {
   const stageRef = useRef<HTMLDivElement>(null);
+  const wrapRefs = useRef<HTMLDivElement[]>([]);
   const photoRefs = useRef<HTMLDivElement[]>([]);
 
   useGSAP(
     () => {
+      const stageEl = stageRef.current;
+      if (!stageEl) return;
+
+      const stageRect = stageEl.getBoundingClientRect();
+      const stageCenterX = stageRect.width / 2;
+      const stageCenterY = stageRect.height / 2;
+
+      wrapRefs.current.forEach((wrapEl) => {
+        const photoRect = wrapEl.getBoundingClientRect();
+        const localLeft = photoRect.left - stageRect.left;
+        const localTop = photoRect.top - stageRect.top;
+        const photoCenterX = localLeft + photoRect.width / 2;
+        const photoCenterY = localTop + photoRect.height / 2;
+
+        gsap.fromTo(
+          wrapEl,
+          { x: stageCenterX - photoCenterX, y: stageCenterY - photoCenterY, scale: 0.6 },
+          {
+            x: 0,
+            y: 0,
+            scale: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: stageEl,
+              start: "top 85%",
+              end: "top 25%",
+              scrub: true,
+            },
+          }
+        );
+      });
+
       const setters = photoRefs.current.map((el, i) => ({
         x: gsap.quickTo(el, "x", { duration: 0.6, ease: "power3.out" }),
         y: gsap.quickTo(el, "y", { duration: 0.6, ease: "power3.out" }),
@@ -27,8 +61,7 @@ export default function ManifestoSection() {
       }));
 
       const handleMove = (e: PointerEvent) => {
-        const rect = stageRef.current?.getBoundingClientRect();
-        if (!rect) return;
+        const rect = stageEl.getBoundingClientRect();
         const nx = (e.clientX - rect.left) / rect.width - 0.5;
         const ny = (e.clientY - rect.top) / rect.height - 0.5;
 
@@ -47,13 +80,12 @@ export default function ManifestoSection() {
         });
       };
 
-      const stageEl = stageRef.current;
-      stageEl?.addEventListener("pointermove", handleMove);
-      stageEl?.addEventListener("pointerleave", handleLeave);
+      stageEl.addEventListener("pointermove", handleMove);
+      stageEl.addEventListener("pointerleave", handleLeave);
 
       return () => {
-        stageEl?.removeEventListener("pointermove", handleMove);
-        stageEl?.removeEventListener("pointerleave", handleLeave);
+        stageEl.removeEventListener("pointermove", handleMove);
+        stageEl.removeEventListener("pointerleave", handleLeave);
       };
     },
     { scope: stageRef }
@@ -64,29 +96,35 @@ export default function ManifestoSection() {
       <div className="mf-stage" ref={stageRef}>
         {PHOTOS.map((p, i) => (
           <div
-            className={`mf-photo ${p.className}`}
+            className={`mf-photo-wrap ${p.className}`}
             key={i}
             ref={(el) => {
-              if (el) photoRefs.current[i] = el;
+              if (el) wrapRefs.current[i] = el;
             }}
-            style={{ transform: `rotate(${p.baseRotate}deg)` }}
           >
-            <img src={p.src} alt="" />
+            <div
+              className="mf-photo"
+              ref={(el) => {
+                if (el) photoRefs.current[i] = el;
+              }}
+              style={{ transform: `rotate(${p.baseRotate}deg)` }}
+            >
+              <img src={p.src} alt="" />
+            </div>
           </div>
         ))}
 
         <div className="mf-center">
           <p className="mf-text">
-            «Una y no más» no es solo un nombre. Es un grito.
+            Contenido único que marca
             <br />
+            tu estrategia, y para tu scroll.
             <br />
-            Lo que dices cuando te venden humo.
+            Tu marca,
             <br />
-            Cuando te prometen estrategia y te entregan postureo.
-            <br />
-            Cuando ves marcas tan vacías como sus feeds.
+            marca la diferencia.
           </p>
-          <a href="#equipo" className="mf-cta">Conócenos</a>
+          <a href="#equipo" className="mf-cta">Quiero un cambio</a>
         </div>
       </div>
     </section>
