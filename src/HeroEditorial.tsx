@@ -118,6 +118,11 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
             </div>
           </div>
 
+          <div className="he-manifesto">
+            <h2 className="he-manifesto-title">Declaración de intenciones</h2>
+            <p className="he-manifesto-text">"Rafa Castaño" no es solo un nombre. Es un Grito. Lo que dices cuando te venden humo. Cuando te prometen estrategia y te entregan postureo. Cuando ves marcas tan vacías como sus Feeds.</p>
+          </div>
+
           <a href="#contacto" className="he-cta">Cuéntanos tu proyecto</a>
         </div>
       </div>
