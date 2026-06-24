@@ -2,9 +2,10 @@
 
 .mf-section {
   background: #000;
-  padding: 6.6rem 1.5rem;
+  padding: 9rem 1.5rem;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 
 .mf-stage {
@@ -90,7 +91,7 @@
 .mf-cta:hover { transform: scale(1.05); }
 
 @media (max-width: 768px) {
-  .mf-section { padding: 4rem 1rem; }
+  .mf-section { padding: 6rem 1rem; }
   .mf-stage { height: 720px; }
   .mf-photo-wrap { width: clamp(90px, 24vw, 120px); height: clamp(115px, 30vw, 150px); }
   .mf-photo-wrap.mf-photo--1 { top: 2%; left: 2%; }
