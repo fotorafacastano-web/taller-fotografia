@@ -113,10 +113,10 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
   return (
     <section className="he-hero">
       <nav className="he-nav">
-        <a href="/" className="he-nav-logo">UNM</a>
+        <a href="/" className="he-nav-logo">RC</a>
         <div className="he-nav-links">
           <a href="#metodo">Método</a>
-          <a href="#testimonios">Testimonios</a>
+          <a href="#testimonios">Travesuras</a>
           <a href="#reservar">Habla conmigo</a>
         </div>
       </nav>
@@ -149,7 +149,13 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
 
           <div className="he-manifesto">
             <h2 className="he-manifesto-title">Declaración de intenciones</h2>
-            <p className="he-manifesto-text">"Rafa Castaño" no es solo un nombre. Es un Grito. Lo que dices cuando te venden humo. Cuando te prometen estrategia y te entregan postureo. Cuando ves marcas tan vacías como sus Feeds.</p>
+            <p className="he-manifesto-text">
+              <span className="he-manifesto-line">"Rafa Castaño" no es solo un nombre.</span>
+              <span className="he-manifesto-line">Es un Grito. Lo que dices cuando</span>
+              <span className="he-manifesto-line">te venden humo. Cuando te prometen</span>
+              <span className="he-manifesto-line">estrategia y te entregan postureo.</span>
+              <span className="he-manifesto-line">Cuando ves marcas tan vacías como sus Feeds.</span>
+            </p>
           </div>
 
           <a href="#contacto" className="he-cta">Hablemos de tu proyecto</a>

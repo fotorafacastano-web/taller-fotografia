@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Inter+Tight:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Inter+Tight:wght@400;500;600;700;800&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -21,11 +21,13 @@
 .he-nav-logo {
   font-family: 'Geist Mono', monospace;
   font-size: 11px;
+  font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #1a1a18;
+  color: #ff004d;
   text-decoration: none;
-  opacity: 0.6;
+  opacity: 1;
+  line-height: 1;
 }
 
 .he-nav-links { display: flex; gap: 2.5rem; }
@@ -39,6 +41,7 @@
   opacity: 0.4;
   text-decoration: none;
   transition: opacity 0.3s;
+  line-height: 1;
 }
 .he-nav-links a:hover { opacity: 1; }
 
@@ -189,16 +192,19 @@
 }
 
 .he-desc {
-  font-size: 12px;
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
   line-height: 1.7;
-  color: rgba(26,26,24,0.45);
-  max-width: 200px;
+  color: #000000;
+  max-width: 320px;
+  white-space: nowrap;
   text-align: right;
 }
 
 .he-manifesto {
   margin-top: 32px;
-  max-width: 25%;
+  max-width: 38%;
   border: 1px solid rgba(26,26,24,0.3);
   border-radius: 4px;
   padding: 14px 16px;
@@ -217,14 +223,23 @@
 }
 
 .he-manifesto-text {
-  font-size: 18px;
-  font-weight: 400;
+  display: block;
+  font-size: clamp(11px, 1.55vw, 20px);
+  font-weight: 700;
   color: rgba(26,26,24,0.7);
   line-height: 1.65;
 }
 
+.he-manifesto-line {
+  display: block;
+  white-space: nowrap;
+}
+
 @media (max-width: 768px) {
-  .he-nav { padding: 1.5rem; }
+  .he-nav { padding: 1.5rem; gap: 1rem; }
+  .he-nav-logo { flex-shrink: 0; }
+  .he-nav-links { gap: 1rem; }
+  .he-nav-links a { font-size: 9.5px; letter-spacing: 0.1em; }
   .he-body { padding: 2rem 1.5rem 0; gap: 1rem; }
   .he-footer { padding: 1.5rem; }
   .he-side { display: none; }
@@ -254,7 +269,8 @@
   }
   .he-bigword-text { font-size: clamp(2.6rem, 16vw, 4.6rem); }
   .he-footer { margin-top: 0; }
-  .he-manifesto { max-width: 100%; }
+  .he-manifesto { max-width: 100%; width: 100%; box-sizing: border-box; }
   .he-manifesto-title { font-size: 18px; }
-  .he-manifesto-text { font-size: 14px; }
+  .he-manifesto-text { font-size: clamp(7px, 2.55vw, 14px); }
+  .he-manifesto-line { white-space: normal; }
 }
