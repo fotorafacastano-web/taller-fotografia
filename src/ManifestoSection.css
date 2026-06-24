@@ -100,8 +100,9 @@
   .mf-photo-wrap.mf-photo--4 { top: 42%; right: -2%; }
   .mf-photo-wrap.mf-photo--5 { bottom: 2%; left: 4%; }
   .mf-photo-wrap.mf-photo--6 { bottom: 0%; right: 4%; }
-  .mf-text { font-size: clamp(1.1rem, 4.2vw, 1.5rem); }
-  .mf-center { gap: 1.4rem; max-width: 78%; }
+  .mf-text { font-size: clamp(1.32rem, 5.04vw, 1.8rem); }
+  .mf-cta { font-size: 10.78px; padding: 0.589rem 1.177rem; }
+  .mf-center { gap: 1.4rem; max-width: 90%; }
 }
 
 @media (max-width: 480px) {
