@@ -98,7 +98,10 @@
 .ds-role > span { display: inline-block; }
 
 .ds-marquee {
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2;
   overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.25);
@@ -110,7 +113,7 @@
   display: inline-flex;
   white-space: nowrap;
   will-change: transform;
-  animation: ds-scroll 14s linear infinite;
+  animation: ds-scroll 21s linear infinite;
 }
 .ds-marquee-track span {
   font-style: italic;
@@ -129,7 +132,7 @@
   .ds-nav nav { gap: 1rem; }
 
   .ds-marquee-track span {
-    font-size: 1.1rem;
+    font-size: 1.32rem;
   }
 
   .ds-role {
@@ -137,8 +140,14 @@
     font-size: 0.7rem;
   }
 
+  .ds-center {
+    left: 0.6rem;
+    right: 0.6rem;
+  }
+
   .ds-name {
-    font-size: clamp(2.2rem, 20vw, 6.5rem);
+    font-size: clamp(2.2rem, calc(20vw + 6px), 6.5rem);
+    letter-spacing: -0.035em;
     white-space: normal;
   }
 }
