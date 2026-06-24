@@ -1,7 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap');
+
 .work-section {
   background: #ece7da;
   padding: 16px 0 0;
   position: relative;
+}
+
+.work-label {
+  margin: 32px 0;
+  padding: 0 3rem;
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  color: #ff004d;
 }
 
 .work-body {

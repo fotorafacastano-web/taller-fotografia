@@ -11,16 +11,17 @@ const PHOTOS = [
 ];
 
 const PROJECT_NAMES = [
-  "Proyecto Uno",
-  "Proyecto Dos",
-  "Proyecto Tres",
-  "Proyecto Cuatro",
-  "Proyecto Cinco",
-  "Proyecto Seis",
-  "Proyecto Siete",
-  "Proyecto Ocho",
-  "Proyecto Nueve",
-  "Proyecto Diez",
+  "Almería Turismo",
+  "Mallorca Turismo",
+  "Roquetas de Mar",
+  "Sierra de las Nieves",
+  "Verano Ceremonia",
+  "Agricultura",
+  "Identidad Visual",
+  "Diseño Web",
+  "Copade",
+  "Cool Green",
+  "Interflora Internacional",
 ];
 
 const PROJECTS = PROJECT_NAMES.map((name, i) => ({
@@ -33,6 +34,7 @@ export default function WorkSection() {
 
   return (
     <section className="work-section" id="work">
+      <p className="work-label">Works</p>
       <div className="work-body">
         <ul className="work-list" onMouseLeave={() => setHovered(0)}>
           {PROJECTS.map((p, i) => (
