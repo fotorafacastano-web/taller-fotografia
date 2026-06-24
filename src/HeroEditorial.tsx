@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./HeroEditorial.css";
 
-const WORDS = ["Con Contenido", "Creatividad", "Ideas"];
+const WORDS = ["Creatividad", "Estrategia", "Y una mirada diferente"];
 const WORD_DURATION = 1500;
 const CROSSFADE = 300;
 const HOLD_PHRASE = 1000;
@@ -23,21 +23,6 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
   const ref = (i: number) => (el: HTMLSpanElement | null) => {
     if (el) wordsRef.current[i] = el;
   };
-
-  useEffect(() => {
-    const textEl = bigWordTextRef.current;
-    const stageEl = stageRef.current;
-    if (!textEl || !stageEl || !word) return;
-    if (window.innerWidth > 600) return;
-
-    textEl.style.fontSize = "";
-    const naturalWidth = textEl.getBoundingClientRect().width;
-    const availableWidth = stageEl.getBoundingClientRect().width;
-    if (naturalWidth > 0) {
-      const currentSize = parseFloat(getComputedStyle(textEl).fontSize);
-      textEl.style.fontSize = `${(currentSize * availableWidth) / naturalWidth}px`;
-    }
-  }, [word]);
 
   useEffect(() => {
     const timers: number[] = [];
@@ -104,7 +89,7 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
                 <span className="he-w he-bold" ref={ref(1)}>contenido,</span>
               </span>
               <span className="he-line2">
-                <span className="he-w" ref={ref(2)}>tu historia,</span>
+                <span className="he-w" ref={ref(2)}>tu esencia,</span>
                 <span className="he-sale-wrap">
                   <span className="he-w he-bold he-italic he-red" ref={ref(3)}>
                     tu marca
@@ -123,7 +108,7 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
             <p className="he-manifesto-text">"Rafa Castaño" no es solo un nombre. Es un Grito. Lo que dices cuando te venden humo. Cuando te prometen estrategia y te entregan postureo. Cuando ves marcas tan vacías como sus Feeds.</p>
           </div>
 
-          <a href="#contacto" className="he-cta">Cuéntanos tu proyecto</a>
+          <a href="#contacto" className="he-cta">Hablemos de tu proyecto</a>
         </div>
       </div>
 

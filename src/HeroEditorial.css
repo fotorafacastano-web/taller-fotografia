@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Inter+Tight:wght@400;500;600;700;800&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -115,14 +115,15 @@
 
 .he-bigword-text {
   display: inline-block;
-  font-family: 'Mango Grotesque', sans-serif;
-  font-weight: 800;
-  font-size: clamp(2.8rem, 13vw, 160px);
-  letter-spacing: 0;
-  line-height: 1;
-  color: #1a1a18;
-  text-transform: uppercase;
-  white-space: nowrap;
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 9vw, 180px);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  color: #ff004d;
+  text-transform: lowercase;
+  white-space: normal;
+  width: 100%;
 }
 
 .he-line1 { display: flex; gap: 12px; align-items: baseline; overflow: hidden; }
@@ -250,7 +251,7 @@
     position: relative;
     inset: auto;
   }
-  .he-bigword-text { font-size: clamp(2rem, 13vw, 4rem); }
+  .he-bigword-text { font-size: clamp(2.6rem, 16vw, 4.6rem); }
   .he-footer { margin-top: 0; }
   .he-manifesto { max-width: 100%; }
 }
