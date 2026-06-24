@@ -84,7 +84,7 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
         <div className="he-nav-links">
           <a href="#metodo">Método</a>
           <a href="#testimonios">Testimonios</a>
-          <a href="#reservar">Reservar</a>
+          <a href="#reservar">Habla conmigo</a>
         </div>
       </nav>
 
