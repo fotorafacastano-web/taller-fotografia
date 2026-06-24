@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./WorkSection.css";
+
+const WIDTH_RATIOS = [0.25, 0.5, 0.75, 1];
 
 const PHOTOS = [
   "/RafaCastano-1.avif",
@@ -31,11 +33,47 @@ const PROJECTS = PROJECT_NAMES.map((name, i) => ({
 
 export default function WorkSection() {
   const [hovered, setHovered] = useState(0);
+  const [widths, setWidths] = useState<number[] | null>(null);
+  const mediaRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const imgRefs = useRef<(HTMLImageElement | null)[]>([]);
+
+  const recalc = () => {
+    const mediaEl = mediaRef.current;
+    const bodyEl = bodyRef.current;
+    if (!mediaEl || !bodyEl) return;
+    const containerHeight = mediaEl.clientHeight;
+    const maxWidthRatio = window.innerWidth <= 900 ? 0.78 : 0.45;
+    const maxWidth = bodyEl.clientWidth * maxWidthRatio;
+    if (!containerHeight || !maxWidth) return;
+
+    const aspects = imgRefs.current.map((img) =>
+      img && img.naturalWidth && img.naturalHeight ? img.naturalWidth / img.naturalHeight : null
+    );
+    if (aspects.some((a) => !a)) return;
+
+    const sum = WIDTH_RATIOS.reduce((acc, r, i) => acc + r / (aspects[i] as number), 0);
+    const baseWidth = Math.min(containerHeight / sum, maxWidth);
+    setWidths(WIDTH_RATIOS.map((r) => r * baseWidth));
+  };
+
+  useEffect(() => {
+    setWidths(null);
+    recalc();
+  }, [hovered]);
+
+  useEffect(() => {
+    const bodyEl = bodyRef.current;
+    if (!bodyEl) return;
+    const observer = new ResizeObserver(() => recalc());
+    observer.observe(bodyEl);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="work-section" id="work">
       <p className="work-label">Works</p>
-      <div className="work-body">
+      <div className="work-body" ref={bodyRef}>
         <ul className="work-list" onMouseLeave={() => setHovered(0)}>
           {PROJECTS.map((p, i) => (
             <li
@@ -48,10 +86,20 @@ export default function WorkSection() {
           ))}
         </ul>
 
-        <div className="work-media">
+        <div className="work-media" ref={mediaRef}>
           <div className="work-media-stack" key={hovered}>
             {PROJECTS[hovered].images.map((src, j) => (
-              <img key={j} src={src} alt={PROJECTS[hovered].name} className="work-media-img" />
+              <img
+                key={j}
+                src={src}
+                alt={PROJECTS[hovered].name}
+                className="work-media-img"
+                ref={(el) => {
+                  imgRefs.current[j] = el;
+                }}
+                onLoad={recalc}
+                style={widths ? { width: `${widths[j]}px` } : undefined}
+              />
             ))}
           </div>
         </div>

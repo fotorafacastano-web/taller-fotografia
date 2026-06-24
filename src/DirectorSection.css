@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap');
 
 .ds-wrap {
   --ds-cream: #ece7da;
@@ -63,23 +63,24 @@
 .ds-nav nav { display: flex; gap: 1.6rem; }
 
 .ds-center {
-  position: relative;
+  position: absolute;
+  top: clamp(5rem, 12vh, 8rem);
+  left: clamp(1.2rem, 4vw, 3rem);
   z-index: 2;
-  place-self: center;
-  text-align: center;
+  text-align: left;
   color: var(--ds-cream);
 }
 
 .ds-name-line { display: block; padding-bottom: 0.04em; }
-.ds-char { display: inline-block; overflow: hidden; vertical-align: top; }
+.ds-char { display: inline-block; overflow: hidden; vertical-align: top; padding-top: 0.06em; margin-top: -0.06em; }
 .ds-char-inner { display: inline-block; will-change: transform; }
 
 .ds-name {
-  font-family: "Mango Grotesque", sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.8rem, 8.2vw, 8rem);
-  line-height: 1.2;
-  letter-spacing: 0.02em;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 300;
+  font-size: clamp(2.4rem, 11vw, 160px);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
   color: #ffffff;
   white-space: nowrap;
@@ -137,7 +138,7 @@
   }
 
   .ds-name {
-    font-size: clamp(3.6rem, 16.4vw, 16rem);
+    font-size: clamp(2.2rem, 20vw, 6.5rem);
     white-space: normal;
   }
 }
