@@ -8,6 +8,9 @@ const HOLD_PHRASE = 1000;
 const ENTRANCE_DONE = 150 * 3 + 200 + 700;
 const FINAL_HOLD = 2000;
 
+const LABEL_WORDS = ["FOTOGRAFÍA", "VÍDEO", "DISEÑO", "WEB", "COPY", "CONTENIDO"];
+const LABEL_INTERVAL = 300;
+
 interface HeroEditorialProps {
   onSequenceComplete?: () => void;
 }
@@ -19,10 +22,18 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
   const [phraseOut, setPhraseOut] = useState(false);
   const [word, setWord] = useState<string | null>(null);
   const [wordVisible, setWordVisible] = useState(false);
+  const [labelIndex, setLabelIndex] = useState(0);
 
   const ref = (i: number) => (el: HTMLSpanElement | null) => {
     if (el) wordsRef.current[i] = el;
   };
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setLabelIndex((i) => (i + 1) % LABEL_WORDS.length);
+    }, LABEL_INTERVAL);
+    return () => window.clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const timers: number[] = [];
@@ -80,7 +91,7 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
       <div className="he-body">
         <span className="he-side">Scroll · 001</span>
         <div className="he-main">
-          <p className="he-label">( servicios )</p>
+          <p className="he-label">( {LABEL_WORDS[labelIndex]} )</p>
 
           <div className="he-stage" ref={stageRef}>
             <h1 className={`he-title${phraseOut ? " he-title--out" : ""}`}>
