@@ -9,12 +9,28 @@ interface DirectorSectionProps {
   cover?: boolean;
 }
 
+function SplitChars({ text }: { text: string }) {
+  return (
+    <>
+      {text.split("").map((char, i) =>
+        char === " " ? (
+          <span key={i}>&nbsp;</span>
+        ) : (
+          <span className="ds-char" key={i}>
+            <span className="ds-char-inner">{char}</span>
+          </span>
+        )
+      )}
+    </>
+  );
+}
+
 export default function DirectorSection({ cover = false }: DirectorSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      gsap.set(".ds-name-line span", { opacity: 0 });
+      gsap.set(".ds-char-inner", { yPercent: 120, rotate: 6 });
       gsap.set(".ds-role span", { y: "115%" });
 
       if (!cover) return;
@@ -25,7 +41,7 @@ export default function DirectorSection({ cover = false }: DirectorSectionProps)
         sectionRef.current?.scrollIntoView({ block: "start" });
         gsap.set(".ds-media", { clipPath: "inset(0% 0 0 0)" });
         gsap.set(".ds-media video", { scale: 1 });
-        gsap.set(".ds-name-line span", { opacity: 1 });
+        gsap.set(".ds-char-inner", { yPercent: 0, rotate: 0 });
         gsap.set(".ds-role span", { y: 0 });
         gsap.set(".ds-marquee", { opacity: 1 });
         return;
@@ -44,9 +60,13 @@ export default function DirectorSection({ cover = false }: DirectorSectionProps)
 
       tl.to(".ds-media video", { scale: 1, duration: 2.2, ease: "power2.out" }, 0);
 
-      tl.to(".ds-name-line--1 span", { opacity: 1, duration: 0.5, ease: "steps(10)" }, 0.3);
-
-      tl.to(".ds-name-line--2 span", { opacity: 1, duration: 0.5, ease: "steps(10)" }, 0.6);
+      tl.to(".ds-name-line--1 .ds-char-inner", {
+        yPercent: 0,
+        rotate: 0,
+        duration: 1,
+        ease: "expo.out",
+        stagger: 0.03,
+      }, 0.3);
 
       tl.from(".ds-role span", { y: "115%", duration: 0.8, ease: "expo.out" }, 0.8);
 
@@ -73,8 +93,7 @@ export default function DirectorSection({ cover = false }: DirectorSectionProps)
 
         <div className="ds-center">
           <h2 className="ds-name">
-            <span className="ds-name-line ds-name-line--1"><span>Rafa</span></span>
-            <span className="ds-name-line ds-name-line--2"><span>Castaño</span></span>
+            <span className="ds-name-line ds-name-line--1"><SplitChars text="Rafa Castaño" /></span>
           </h2>
           <div className="ds-role-line">
             <p className="ds-role"><span>Director</span></p>
