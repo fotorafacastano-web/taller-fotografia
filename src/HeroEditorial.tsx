@@ -18,6 +18,7 @@ interface HeroEditorialProps {
 export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps) {
   const wordsRef = useRef<HTMLSpanElement[]>([]);
   const stageRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
   const bigWordTextRef = useRef<HTMLSpanElement>(null);
   const [phraseOut, setPhraseOut] = useState(false);
   const [word, setWord] = useState<string | null>(null);
@@ -33,6 +34,38 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
       setLabelIndex((i) => (i + 1) % LABEL_WORDS.length);
     }, LABEL_INTERVAL);
     return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const titleEl = titleRef.current;
+    if (!titleEl) return;
+    const line1 = titleEl.querySelector(".he-line1") as HTMLElement | null;
+    const line2 = titleEl.querySelector(".he-line2") as HTMLElement | null;
+    if (!line1 || !line2) return;
+
+    const contentWidth = (line: HTMLElement) => {
+      const children = Array.from(line.children) as HTMLElement[];
+      if (!children.length) return 0;
+      const left = Math.min(...children.map((c) => c.getBoundingClientRect().left));
+      const right = Math.max(...children.map((c) => c.getBoundingClientRect().right));
+      return right - left;
+    };
+
+    const fit = () => {
+      titleEl.style.fontSize = "";
+      const targetWidth = window.innerWidth * 0.8;
+      for (let i = 0; i < 3; i++) {
+        const width = Math.max(contentWidth(line1), contentWidth(line2));
+        if (width <= 0) break;
+        const current = parseFloat(getComputedStyle(titleEl).fontSize);
+        titleEl.style.fontSize = `${current * (targetWidth / width)}px`;
+      }
+    };
+
+    fit();
+    document.fonts?.ready?.then(fit);
+    window.addEventListener("resize", fit);
+    return () => window.removeEventListener("resize", fit);
   }, []);
 
   useEffect(() => {
@@ -94,7 +127,7 @@ export default function HeroEditorial({ onSequenceComplete }: HeroEditorialProps
           <p className="he-label">( {LABEL_WORDS[labelIndex]} )</p>
 
           <div className="he-stage" ref={stageRef}>
-            <h1 className={`he-title${phraseOut ? " he-title--out" : ""}`}>
+            <h1 className={`he-title${phraseOut ? " he-title--out" : ""}`} ref={titleRef}>
               <span className="he-line1">
                 <span className="he-w" ref={ref(0)}>Tu</span>
                 <span className="he-w he-bold" ref={ref(1)}>contenido,</span>
