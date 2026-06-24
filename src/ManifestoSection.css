@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&family=Inter+Tight:wght@400;500;600;700;800&display=swap');
 
 .mf-section {
   background: #000;
@@ -60,7 +60,7 @@
 }
 
 .mf-text {
-  font-family: "Mango Grotesque", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   font-weight: 500;
   font-size: clamp(2.016rem, 5.76vw, 60.48px);
   line-height: 1.02;
@@ -82,8 +82,8 @@
   border-radius: 4px;
   background: #ffffff;
   color: #0a0a0a;
-  font-family: "Mango Grotesque", sans-serif;
-  font-size: 0.9rem;
+  font-family: "Inter Tight", sans-serif;
+  font-size: 20px;
   font-weight: 600;
   text-decoration: none;
   transition: transform 0.3s ease;
