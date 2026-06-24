@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import VideoGrainOverlay from "./VideoGrainOverlay";
 import "./DirectorSection.css";
 
 gsap.registerPlugin(useGSAP);
@@ -27,6 +28,12 @@ function SplitChars({ text }: { text: string }) {
 
 export default function DirectorSection({ cover = false }: DirectorSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoEl, setVideoEl] = useState<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    setVideoEl(videoRef.current);
+  }, []);
 
   useGSAP(
     () => {
@@ -79,7 +86,16 @@ export default function DirectorSection({ cover = false }: DirectorSectionProps)
     <div className="ds-wrap" ref={sectionRef}>
       <header className="ds-hero">
         <div className="ds-media">
-          <video muted loop playsInline autoPlay src="/fondo-web.mp4" />
+          <video
+            ref={videoRef}
+            muted
+            loop
+            playsInline
+            autoPlay
+            src="/fondo-web.mp4"
+            className="ds-media-video-source"
+          />
+          <VideoGrainOverlay video={videoEl} />
         </div>
 
         <div className="ds-nav">
