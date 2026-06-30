@@ -78,6 +78,8 @@ const FRAGMENT_SHADER = `
   uniform float uHover;
   uniform float uTime;
   uniform float uOffset;
+  uniform vec2 uTexRepeat;
+  uniform vec2 uTexOffset;
 
   void main() {
     float shift = (abs(uOffset) * 0.06);
@@ -89,7 +91,7 @@ const FRAGMENT_SHADER = `
       float b = texture2D(uTextTexture, vUv - vec2(shift, 0.0)).b;
       tex = vec4(r, g, b, 1.0);
     } else {
-      vec2 imgUv = vec2(1.0 - vUv.x, vUv.y);
+      vec2 imgUv = vec2(1.0 - vUv.x, vUv.y) * uTexRepeat + uTexOffset;
       float r = texture2D(uTexture, imgUv + vec2(shift, 0.0)).r;
       float g = texture2D(uTexture, imgUv).g;
       float b = texture2D(uTexture, imgUv - vec2(shift, 0.0)).b;
@@ -215,27 +217,42 @@ export default function SpiralGallery() {
     }
 
     const items: ItemData[] = [];
+    const planeAspect = 32 / 18;
 
     for (let i = 0; i < ITEM_COUNT; i++) {
       const photo = PHOTOS[i % PHOTOS.length];
-      const texture = textureLoader.load(photo);
       const title = PROJECT_TITLES[i % PROJECT_TITLES.length];
       const textTexture = createTextTexture(title, i);
 
       const material = new THREE.ShaderMaterial({
         uniforms: {
-          uTexture: { value: texture },
+          uTexture: { value: null as THREE.Texture | null },
           uTextTexture: { value: textTexture },
           uOffset: { value: 0.0 },
           uAlpha: { value: 0.0 },
           uTime: { value: 0.0 },
           uHover: { value: 0.0 },
+          uTexRepeat: { value: new THREE.Vector2(1, 1) },
+          uTexOffset: { value: new THREE.Vector2(0, 0) },
         },
         vertexShader: VERTEX_SHADER,
         fragmentShader: FRAGMENT_SHADER,
         transparent: true,
         side: THREE.DoubleSide,
       });
+
+      const texture = textureLoader.load(photo, (loaded) => {
+        const img = loaded.image as HTMLImageElement;
+        const imageAspect = img.width / img.height;
+        if (imageAspect > planeAspect) {
+          material.uniforms.uTexRepeat.value.set(planeAspect / imageAspect, 1);
+          material.uniforms.uTexOffset.value.set((1 - planeAspect / imageAspect) / 2, 0);
+        } else {
+          material.uniforms.uTexRepeat.value.set(1, imageAspect / planeAspect);
+          material.uniforms.uTexOffset.value.set(0, (1 - imageAspect / planeAspect) / 2);
+        }
+      });
+      material.uniforms.uTexture.value = texture;
 
       const mesh = new THREE.Mesh(geometry, material);
       const hitMesh = new THREE.Mesh(hitGeometry, hitMaterial);
