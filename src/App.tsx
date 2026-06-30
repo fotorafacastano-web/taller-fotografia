@@ -3,7 +3,6 @@ import HeroEditorial from "./HeroEditorial";
 import DirectorSection from "./DirectorSection";
 import ManifestoSection from "./ManifestoSection";
 import WorkSection from "./WorkSection";
-import SpiralGallery from "./SpiralGallery";
 
 export default function App() {
   const [cover, setCover] = useState(false);
@@ -14,7 +13,6 @@ export default function App() {
       <DirectorSection cover={cover} />
       <ManifestoSection />
       <WorkSection />
-      <SpiralGallery />
     </main>
   );
 }
