@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -20,6 +21,9 @@ type ContactFormData = z.infer<typeof contactSchema>;
 const BUDGET_OPTIONS = ["< 1.000€", "1.000€ – 3.000€", "3.000€ – 8.000€", "+ 8.000€"];
 
 export default function ContactSection() {
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [hovering, setHovering] = useState(false);
   const {
     register,
     handleSubmit,
@@ -28,6 +32,29 @@ export default function ContactSection() {
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
   });
+
+  useEffect(() => {
+    let raf = 0;
+
+    const update = () => {
+      const vh = window.innerHeight;
+      const start = vh * 0.95;
+      const end = vh * 0.55;
+
+      lineRefs.current.forEach((line) => {
+        if (!line) return;
+        const rect = line.getBoundingClientRect();
+        const progress = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
+        line.style.opacity = String(progress);
+        line.style.transform = `translateY(${(1 - progress) * 28}px)`;
+      });
+
+      raf = requestAnimationFrame(update);
+    };
+
+    raf = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   const onSubmit = (data: ContactFormData) => {
     const subject = encodeURIComponent(`Proyecto nuevo — ${data.name}`);
@@ -42,10 +69,25 @@ export default function ContactSection() {
     <section className="ct-section" id="contacto">
       <p className="ct-label">( Hablemos )</p>
 
-      <h2 className="ct-headline">
-        Tu marca tiene algo que decir.
-        <br />
-        <span className="ct-headline-accent">Hagamos que se note.</span>
+      <h2
+        className={`ct-headline${hovering ? " is-hovering" : ""}`}
+        ref={headlineRef}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+      >
+        <span className="ct-line">
+          <span className="ct-line-inner" ref={(el) => { lineRefs.current[0] = el; }}>
+            Tu marca tiene algo que decir.
+          </span>
+        </span>
+        <span className="ct-line">
+          <span
+            className="ct-line-inner ct-headline-accent"
+            ref={(el) => { lineRefs.current[1] = el; }}
+          >
+            Hagamos que se note.
+          </span>
+        </span>
       </h2>
 
       <div className="ct-body">
